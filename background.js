@@ -2,7 +2,7 @@ function listener(msg, sender, sendResponse) {
     var ret = false;
     switch (msg.method) {
         case "api_proxy":
-            ret = proxyAPI(Array.from(msg.args.path), Array.from(msg.args.args), sendResponse);
+            ret = proxyAPI(Array.from(msg.args.path), Array.from(msg.args.args), Array.from(msg.args.types), sendResponse);
             break;
         default:
             break;
@@ -10,8 +10,16 @@ function listener(msg, sender, sendResponse) {
     return ret;
 }
 
-function proxyAPI(path, args, sendResponse) {
+function proxyAPI(path, args, types, sendResponse) {
     args.push(sendResponse);
+    console.log(types);
+    for(var i in types){
+        if(types[i] == "function"){
+            //console.log("creating function: " + i);
+            //console.log("return " + args[i]);
+            args[i] = new Function("return " + args[i])();
+        }
+    }
     callRecursive(window, path, args);
     return true;
 }
