@@ -1,0 +1,12 @@
+{
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "icons": {},
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' blob: filesystem: chrome-extension-resource:",
+    "name": "API Proxy",
+    "description": "Allows developpers to use chrome APIs as if they were building an extension while they are building an app",
+    "permissions": ["<all_urls>", "webRequest", "webRequestBlocking", "webNavigation"],
+    "version": "0.1.0",
+    "manifest_version": 2
+}
