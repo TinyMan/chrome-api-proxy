@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Mnimal Working Example for Chrome API Proxy extension",
+    "description": "Demonstrate the basics of How to Use API Proxy in order to use chrome.* api as if we were in an extension",
+    "version": "0.1.0",
+    "app": {
+        "background": {
+            "scripts": ["background.js"]
+        }
+    },
+    "permissions": [],
+    "icons": {},
+    "minimum_chrome_version": "49"
+}
