@@ -1,4 +1,4 @@
-var appid = "lfnoccodgmppjpnglnpnbkmfgnldmgha"; // ID of API Proxy extension
+var appid = "nbkaplidonnphljpmolopeigkfjihdoh"; // ID of API Proxy extension
 
 function getClosure(methods = [], property = null) {
     if (typeof methods == "string") methods = [methods];
