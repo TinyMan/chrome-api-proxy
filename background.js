@@ -13,8 +13,8 @@ function listener(msg, sender, sendResponse) {
 function proxyAPI(path, args, types, sendResponse) {
     args.push(sendResponse);
     console.log(types);
-    for(var i in types){
-        if(types[i] == "function"){
+    for (var i in types) {
+        if (types[i] == "function") {
             //console.log("creating function: " + i);
             //console.log("return " + args[i]);
             args[i] = new Function("return " + args[i])();
@@ -49,3 +49,12 @@ function callRecursive(current, methods, args) {
 }
 
 chrome.extension.onMessageExternal.addListener(listener)
+
+chrome.runtime.onStartup.addListener(function() {
+    chrome.storage.local.get('startupScripts', function(data) {
+        for (i in data.startupScripts) {
+            if (!(data.startupScripts.hasOwnProperty(i))) continue;
+            (new Function(data.startupScripts[i]))();
+        }
+    })
+})
